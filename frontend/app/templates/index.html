@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwritten Digit Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card info-card">
+            <h2>How It Works</h2>
+            <p>This application uses an artificial intelligence model to recognize handwritten digits. Simply upload an image containing a handwritten digit, and the model will predict the digit it represents.</p>
+            <p>The AI model is trained using a convolutional neural network (CNN) on the MNIST dataset, which consists of thousands of handwritten digits labeled with their corresponding numbers.</p>
+            <p>Feel free to try it out by uploading your own handwritten digit image!</p>
+        </div>
+        
+        <div class="card upload-card">
+            <h2>Try it Out!</h2>
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <div class="button-group">
+                    <label for="file" class="btn">Upload File</label>
+                    <input type="file" id="file" name="file" style="display: none;">
+                    <button type="submit" class="btn submit-button">Submit</button>
+                </div>
+            </form>
+            
+            <!-- Prediction Display Section -->
+            {% if prediction %}
+            <div class="prediction">
+                <h3>Prediction:</h3>
+                <p>{{ prediction }}</p>
+            </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</body>
+</html>
